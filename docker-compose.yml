@@ -1,0 +1,42 @@
+version: '2'
+services:
+
+  hdfs-namenode-1:
+    build: './02.1-hdfs-namenode'
+    image: 'ylzone/hdfs-namenode'
+    container_name: 'hdfs-namenode-1'
+    hostname: 'hdfs-namenode-1'
+    ports:
+         - '50070:50070'
+    volumes:
+        - '/data'
+
+  hdfs-datanode-1:
+    build: './02.2-hdfs-datanode'
+    image: 'ylzone/hdfs-datanode'
+    container_name: 'hdfs-datanode-1'
+    hostname: 'hdfs-datanode-1'
+    volumes:
+        - '/data'
+    links:
+        - 'hdfs-namenode-1'
+
+  hdfs-datanode-2:
+    build: './02.2-hdfs-datanode'
+    image: 'ylzone/hdfs-datanode'
+    container_name: 'hdfs-datanode-2'
+    hostname: 'hdfs-datanode-2'
+    volumes:
+        - '/data'
+    links:
+        - 'hdfs-namenode-1'
+
+  hdfs-datanode-3:
+    build: './02.2-hdfs-datanode'
+    image: 'ylzone/hdfs-datanode'
+    container_name: 'hdfs-datanode-3'
+    hostname: 'hdfs-datanode-3'
+    volumes:
+        - '/data'
+    links:
+        - 'hdfs-namenode-1'

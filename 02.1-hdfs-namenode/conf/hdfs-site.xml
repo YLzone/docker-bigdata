@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/data/hadoop/hdfs</value>
+  </property>
+
+  <property>
+    <name>dfs.name.dir</name>
+    <value>/data/hadoop/hdfs/namenode</value>
+  </property>
+
+  <property>
+    <name>dfs.data.dir</name>
+    <value>/data/hadoop/hdfs/datanode</value>
+  </property>
+
+  <property>
+    <name>dfs.replication</name>
+    <value>2</value>
+  </property>
+
+</configuration>
