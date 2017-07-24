@@ -40,3 +40,53 @@ services:
         - '/data'
     links:
         - 'hdfs-namenode-1'
+
+  zookeeper-1:
+    image: 'ylzone/zookeeper'
+    container_name: 'zookeeper-1'
+    hostname: 'zookeeper-1'
+    environment:
+        ENTRY_ZK_MYID: "1"
+        ENTRY_ZK_NODE_LIST: "server.1=zookeeper-1:2888:3888 server.2=zookeeper-2:2888:3888 server.3=zookeeper-3:2888:3888"
+    volumes:
+        - '/data'
+
+  zookeeper-2:
+    image: 'ylzone/zookeeper'
+    container_name: 'zookeeper-2'
+    hostname: 'zookeeper-2'
+    environment:
+        ENTRY_ZK_MYID: "2"
+        ENTRY_ZK_NODE_LIST: "server.1=zookeeper-1:2888:3888 server.2=zookeeper-2:2888:3888 server.3=zookeeper-3:2888:3888"
+    volumes:
+        - '/data'
+
+  zookeeper-3:
+    image: 'ylzone/zookeeper'
+    container_name: 'zookeeper-3'
+    hostname: 'zookeeper-3'
+    environment:
+        ENTRY_ZK_MYID: "3"
+        ENTRY_ZK_NODE_LIST: "server.1=zookeeper-1:2888:3888 server.2=zookeeper-2:2888:3888 server.3=zookeeper-3:2888:3888"
+    volumes:
+        - '/data'
+
+
+  hbase-master-1:
+    image: 'ylzone/hbase-master'
+    container_name: 'hbase-master-1'
+    hostname: 'hbase-master-1'
+    volumes:
+        - '/data'
+    links:
+        - 'hdfs-namenode-1'
+
+  hbase-regionserver-1:
+    image: 'ylzone/hbase-regionserver'
+    container_name: 'hbase-regionserver-1'
+    hostname: 'hbase-regionserver-1'
+    volumes:
+        - '/data'
+    links:
+        - 'hdfs-namenode-1'
+

@@ -1,0 +1,13 @@
+version: '2'
+services:
+
+  hbase-master-1:
+    image: 'ylzone/hbase-master'
+    container_name: 'hbase-master-1'
+    command: /bin/bash
+    hostname: 'hbase-master-1'
+    external_links:
+        - 'zookeeper-1'
+    volumes:
+        - '/data'
+
